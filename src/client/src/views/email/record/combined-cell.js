@@ -18,6 +18,15 @@ define(['view'], Dep => {
                 model: this.model,
             });
 
+            this.createView('assignedUser', 'views/fields/assigned-user',
+                {
+                    mode: 'list',
+                    name: 'assignedUser',
+                    selector: '.assigned-user-container',
+                    model: this.model,
+                }
+            );
+
             this.createView(
                 'personStringData',
                 'views/email/fields/person-string-data',

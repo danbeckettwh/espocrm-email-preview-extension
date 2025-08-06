@@ -14,6 +14,12 @@ Quickly view e-mails in a compact combined view.
 
 Quickly view e-mails in a compact combined view.
 
+## Features
+
+*   **Combined View:** View emails in a compact, combined view.
+*   **Assigned User:** See the assigned user for each email in the list and preview.
+*   **Drag and Drop:** Move emails to folders by dragging and dropping them.
+
 ![Example screen shot](assets/example.png)
 
 ## Requires

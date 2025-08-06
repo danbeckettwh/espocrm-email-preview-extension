@@ -8,5 +8,27 @@
     "listViewModeList": [
         "list",
         "combined"
-    ]
+    ],
+    "listDefs": {
+        "combined": {
+            "additionalAttributeList": [
+                "assignedUserName"
+            ]
+        }
+    },
+    "recordViews": {
+        "detailCombined": {
+            "layout": [
+                {
+                    "rows": [
+                        [
+                            {
+                                "name": "assignedUser"
+                            }
+                        ]
+                    ]
+                }
+            ]
+        }
+    }
 }
