@@ -179,6 +179,12 @@ define(['views/email/record/list', 'email-combined-view:helpers/version'], funct
 
                 const viewName = this.getMetadata().get(['clientDefs', 'Email', 'recordViews', 'detailCombined']) || 'email-combined-view:views/email/record/combined-detail';
 
+                const container = this.getParentView().$el.find('.detail-container');
+
+                if (!container.length) {
+                    this.getParentView().$el.append('<div class="detail-container col-sm-7"></div>');
+                }
+
                 const options = {
                     model: model,
                     el: this.getParentView().getSelector() + ' .detail-container',

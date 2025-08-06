@@ -40,12 +40,7 @@
     width: 8px;
 }
 
-.email-combined.is-combined .email-list-container table thead,
-.email-combined.is-combined .email-list-container table tbody tr {
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-}
+
 
 .email-combined.is-combined .detail-container .field[data-name="body"] {
     max-height: 600px;
