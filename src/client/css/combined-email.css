@@ -7,6 +7,25 @@
     text-overflow: ellipsis;
 }
 
+.email-list-container .list-row > .cell[data-name="combinedCell"] .avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.email-list-container .list-row > .cell[data-name="combinedCell"] .avatar-placeholder {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+}
+
+.email-list-container .list-row > .cell[data-name="combinedCell"] .assigned-user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .email-list-container .list {
     margin-right: 0 !important;
 }

@@ -3,9 +3,20 @@ define(['view'], Dep => {
         template: 'email-combined-view:email/record/combined-cell',
 
         data: function () {
+            var assignedUserId = this.model.get('assignedUserId');
+            var userImage = '';
+            
+            if (assignedUserId) {
+                userImage = '<img src="?entryPoint=avatar&size=small&id=' + 
+                    assignedUserId + '" class="avatar avatar-small" />';
+            } else {
+                userImage = '<div class="avatar avatar-small avatar-placeholder"></div>';
+            }
+
             return {
                 isRead: this.model.get('isRead'),
                 assignedUserName: this.model.get('assignedUserName'),
+                userImage: userImage
             };
         },
 
