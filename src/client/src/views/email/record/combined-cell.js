@@ -5,6 +5,7 @@ define(['view'], Dep => {
         data: function () {
             return {
                 isRead: this.model.get('isRead'),
+                assignedUserName: this.model.get('assignedUserName'),
             };
         },
 

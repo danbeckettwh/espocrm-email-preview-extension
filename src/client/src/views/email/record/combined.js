@@ -8,7 +8,7 @@ define(['views/email/record/list', 'email-combined-view:helpers/version'], funct
             customLabel: ''
         }],
 
-        selectAttributes: ['takenStatus'],
+        selectAttributes: ['takenStatus', 'assignedUserId', 'assignedUserName'],
 
         rowActionsDisabled: true,
 

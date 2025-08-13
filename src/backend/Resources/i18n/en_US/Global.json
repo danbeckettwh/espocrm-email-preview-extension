@@ -1,5 +1,6 @@
 {
     "listViewModes": {
         "combined": "Combined"
-    }
+    },
+    "unassigned": "Unassigned"
 }
