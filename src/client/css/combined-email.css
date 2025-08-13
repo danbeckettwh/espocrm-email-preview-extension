@@ -24,6 +24,33 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    pointer-events: none;
+}
+
+.email-list-container .list-row > .cell[data-name="combinedCell"] .assigned-user img,
+.email-list-container .list-row > .cell[data-name="combinedCell"] .assigned-user .avatar-placeholder {
+    pointer-events: none;
+}
+
+/* Drag and drop styling */
+.email-dragging {
+    opacity: 0.7;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: var(--state-success-bg);
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.folder-droppable {
+    background-color: var(--state-success-bg) !important;
+    transition: background-color 0.2s ease;
+}
+
+.folder-hover {
+    background-color: var(--state-warning-bg) !important;
 }
 
 .email-list-container .list {

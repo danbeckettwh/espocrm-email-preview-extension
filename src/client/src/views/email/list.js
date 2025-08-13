@@ -18,8 +18,52 @@ define(['views/email/list'], Dep => {
 
             this.applyEmail();
 
-            this.on('after:render', () => this.reinitStickables());
+            this.on('after:render', () => {
+                this.reinitStickables();
+            });
+
             this.on('remove', () => this.removeStickableEmails());
+
+            // Handle drag and drop events
+            this.listenTo(this, 'email-drag-start', (id) => {
+                // Highlight available folders
+                if (this.getView('folders')) {
+                    this.getView('folders').$el.find('ul.folders > li').addClass('folder-droppable');
+                }
+            });
+
+            this.listenTo(this, 'email-drag-stop', () => {
+                // Remove folder highlighting
+                if (this.getView('folders')) {
+                    this.getView('folders').$el.find('ul.folders > li').removeClass('folder-droppable');
+                }
+            });
+
+            // Listen for view mode changes
+            this.listenTo(this, 'switch-mode', () => {
+                // Force re-initialization of both list and folders
+                this.reRenderViews();
+            });
+        },
+
+        reRenderViews: function () {
+            // Re-initialize folders first
+            const foldersView = this.getView('folders');
+            if (foldersView) {
+                foldersView.reRender();
+            }
+
+            // Then re-initialize list
+            const listView = this.getView('list');
+            if (listView) {
+                listView.reRender();
+            }
+        },
+
+        reRenderList: function () {
+            if (this.collection.length && this.getView('list')) {
+                this.getView('list').reRender();
+            }
         },
 
         reinitStickables: function () {

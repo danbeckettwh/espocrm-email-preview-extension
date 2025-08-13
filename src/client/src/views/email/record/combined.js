@@ -28,7 +28,10 @@ define(['views/email/record/list', 'email-combined-view:helpers/version'], funct
 
             this.lastOpenId = null;
 
-            this.on('remove', () => this.getParentView().clearView('combinedDetail'));
+            this.on('remove', () => {
+                this.getParentView().clearView('combinedDetail');
+                this.cleanupDraggable();
+            });
         },
 
         setupEvents: function () {
@@ -78,7 +81,14 @@ define(['views/email/record/list', 'email-combined-view:helpers/version'], funct
 
             this.loadHoverActions();
             this.colorRows();
-            this.makeDraggable();
+            
+            // Ensure jQuery UI draggable is available before initializing
+            if ($ && $.fn.draggable) {
+                this.initDraggable();
+            } else {
+                // If jQuery UI isn't loaded yet, wait a brief moment
+                setTimeout(() => this.initDraggable(), 100);
+            }
 
             const emailId = this.lastOpenId || this.collection.selectedEmailId;
 
@@ -95,6 +105,21 @@ define(['views/email/record/list', 'email-combined-view:helpers/version'], funct
                 this.switchToId(id);
             } else {
                 this.actionQuickView({id: id});
+            }
+        },
+
+        initDraggable: function () {
+            // Clean up any existing draggable instances first
+            this.cleanupDraggable();
+            
+            // Initialize draggable on rows
+            this.makeDraggable();
+        },
+
+        cleanupDraggable: function () {
+            const $rows = this.$el.find('tr.list-row');
+            if ($rows.hasClass('ui-draggable')) {
+                $rows.draggable('destroy');
             }
         },
 
