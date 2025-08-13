@@ -78,6 +78,7 @@ define(['views/email/record/list', 'email-combined-view:helpers/version'], funct
 
             this.loadHoverActions();
             this.colorRows();
+            this.makeDraggable();
 
             const emailId = this.lastOpenId || this.collection.selectedEmailId;
 
@@ -95,6 +96,23 @@ define(['views/email/record/list', 'email-combined-view:helpers/version'], funct
             } else {
                 this.actionQuickView({id: id});
             }
+        },
+
+        makeDraggable: function () {
+            this.$el.find('tr.list-row').draggable({
+                revert: 'invalid',
+                helper: 'clone',
+                appendTo: 'body',
+                cursorAt: {left: 20, top: 20},
+                start: (e, ui) => {
+                    ui.helper.addClass('email-dragging');
+                    const id = $(e.target).data('id');
+                    this.getParentView().trigger('email-drag-start', id);
+                },
+                stop: () => {
+                    this.getParentView().trigger('email-drag-stop');
+                },
+            });
         },
 
         colorRows: function () {
@@ -218,6 +236,18 @@ define(['views/email/record/list', 'email-combined-view:helpers/version'], funct
                     view.render();
                 });
             });
+        },
+
+        onDrop: function (id, folderId) {
+            Espo.Ajax
+                .postRequest('Email/action/changeFolder', {
+                    id: id,
+                    folderId: folderId,
+                })
+                .then(() => {
+                    this.removeRecordFromList(id);
+                    this.notify('Moved', 'success');
+                });
         },
 
         switchNeighbor: function (model, direction = 1) {

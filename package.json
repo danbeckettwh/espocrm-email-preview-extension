@@ -12,9 +12,10 @@
     "author": "Apertia Tech s.r.o.",
     "license": "GPL-3.0-or-later",
     "devDependencies": {
+        "axios": "^0.27.2",
         "dotenv": "^16.0.1",
         "form-data": "^4.0.0",
-        "grunt": "^1.5.3",
+        "grunt": "^1.6.1",
         "grunt-contrib-clean": "^2.0.1",
         "grunt-contrib-compress": "^2.0.0",
         "grunt-contrib-copy": "^1.0.0",
@@ -23,7 +24,6 @@
         "grunt-contrib-less": "^3.0.0",
         "grunt-contrib-uglify": "^5.2.1",
         "grunt-mkdir": "^1.1.0",
-        "ssh2": "^1.10.0",
-        "axios": "^0.27.2"
+        "ssh2": "^1.10.0"
     }
 }
