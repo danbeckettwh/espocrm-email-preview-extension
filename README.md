@@ -1,49 +1,23 @@
-# Module - Email Combined View
+# EspoCRM Email Preview Extension (Enhanced)
 
-Quickly view e-mails in a compact combined view.
+This is an enhanced fork of the [Email Preview Extension by mozkomor05](https://github.com/mozkomor05/espocrm-email-preview-extension).
 
-## Table of Contents
+This version builds upon the original by adding new features to improve email management and visibility within EspoCRM.
 
-* [Introduction](#introduction)
-* [Requires](#requires)
-* [Installation](#installation)
-    * [Pre-build extension release](#pre-build-extension-release)
-    * [Build from source](#build-from-source)
+## Features
 
-## Introduction
+This extension includes all the features of the original, plus:
 
-Quickly view e-mails in a compact combined view.
-
-![Example screen shot](assets/example.png)
-
-## Requires
-
-- EspoCRM >= 7.0
-- PHP >= 7.2
+*   **Assigned Users in List View**: See which users are assigned to an email directly in the combined email list view.
+*   **Drag-and-Drop to Folders**: Easily organize your emails by dragging them from the list and dropping them into your desired folder.
 
 ## Installation
 
-### Pre-build extension release
+1.  Download the latest release package (`.zip` file) from the Releases page of this repository.
+2.  Log in to your EspoCRM instance as an administrator.
+3.  Navigate to `Administration` > `Extensions`.
+4.  Upload the downloaded `.zip` file and click "Install".
 
-1. Download the latest release from [Release page](https://github.com/mozkomor05/espocrm-email-preview-extension/releases/latest).
-2. Go to **Administration** -> **Extensions** and upload the downloaded file.
+## Credits
 
-### Build from source
-
-1. Make sure than `node`, `npm` and `composer` are installed.
-2. Clone the repository.
-3. Run `npm install`.
-4. Run `grunt package`. This will create a `dist` folder with the final extension package..
-
-#### Deploying
-
-Optionally you can create a `.env` file based on the `.env.template` file. The `.env` file will be used to deploy the
-extension to an existing EspoCRM installation.
-
-**Linux example**
-
-```shell
-mv .env.template .env
-vim .env # edit the file
-grunt deploy # deploy the extension
-```
+A big thank you to mozkomor05 for creating the original extension.

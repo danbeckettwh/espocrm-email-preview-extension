@@ -102,17 +102,11 @@ define(['views/email/list'], Dep => {
 
             const bottomSpaceHeight = parseInt(window.getComputedStyle($('#content').get(0)).paddingBottom, 10);
 
-            const getOffsetTop = (/** JQuery */ $element) => {
-                let element = $element.get(0);
-
-                let value = 0;
-
-                while (element) {
-                    value += !isNaN(element.offsetTop) ? element.offsetTop : 0;
-
-                    element = element.offsetParent;
+            const getOffsetTop = ($element) => {
+                if (!$element?.length) {
+                    return 0;
                 }
-
+                const value = $element.offset().top;
                 if (isSmallScreen) {
                     return value;
                 }
@@ -185,7 +179,7 @@ define(['views/email/list'], Dep => {
         prepareRecordViewOptions: function (o) {
             if (this._dontSkipNextBuildRows) {
                 o.skipBuildRows = false;
-                this._skipNextBuildRows = false;
+                this._dontSkipNextBuildRows = false;
             }
 
             // 7.5 compatibility
